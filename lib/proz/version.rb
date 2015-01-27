@@ -1,0 +1,3 @@
+module Proz
+  VERSION = "0.0.1"
+end
