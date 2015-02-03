@@ -29,6 +29,29 @@ Proz::Client.new(key: 'yourAPIkey').freelancer(uuid)['site_name']
 # => 'Joe Translator'
 ```
 
+#### OAuth2
+
+To Setup Your App with ProZ OAuth2
+
+1) Create an account on [ProZ.com](https://www.proz.com)
+
+2) Register an [API client app](https://www.proz.com/oauth/client-apps)
+
+You will be assigned a client_id and client_secret. You will need to choose a `redirect_uri`. For example, you could choose something like:  
+`redirect_uri: https://www.yourdomain.com/proz` or just `redirect_uri: https://www.yourdomain.com`
+
+3) Create a route in your project for the above `redirect_uri` if that route does not already exist.
+If you are building a Rails app, an example might be:
+
+*config/routes.rb*  
+
+```ruby
+match '/proz', to: 'static_pages#proz', via: :get
+```
+
+@oauth_link = Proz::OAuth2.new(client_id: 'yourClientID', client_secret: 'yourClientSecret').link
+
+
 ## Contributing
 
 1. Fork it ( https://github.com/diasks2/proz/fork )
