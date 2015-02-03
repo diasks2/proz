@@ -1,7 +1,5 @@
 require 'httparty'
 
-FREELANCER_URL = "/freelancer/"
-
 module Proz
   class Client
     include HTTParty

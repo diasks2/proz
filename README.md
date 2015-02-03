@@ -51,7 +51,7 @@ If you are building a Rails app, an example might be:
 match '/proz', to: 'static_pages#proz', via: :get
 ```
 
-4) Create a link within your app 
+4) Create a link within your app  
 *controller*
 ```ruby
 proz = Proz::OAuth2.new(client_id: 'yourClientID', client_secret: 'yourClientSecret')
@@ -65,74 +65,72 @@ proz = Proz::OAuth2.new(client_id: 'yourClientID', client_secret: 'yourClientSec
 
 5) Exchange authorization code for tokens
 ```ruby
-token = proz.exchange(params[:code])
+token = proz.exchange_code_for_token(params[:code])
 ```
 
-6) Save the token
+6) Save the token and refresh token
 ```ruby
 current_user.update_columns(proz_oauth_token: token)
 ```
 
 7) Retrieve the user's profile info
 ```ruby
-proz.profile(token)
+Proz::Profile.new(token: token).profile
 
 # => {
-#      "meta": null, 
-#      "data": {
-#        "skills": {
-#          "specific_disciplines": [], 
-#          "language_pairs": [], 
-#          "general_disciplines": [
-#            {
-#              "disc_gen_name": "Tech/Engineering", 
-#              "disc_gen_id": 1
-#            }, 
-#            {
-#              "disc_gen_name": "Art/Literary", 
-#              "disc_gen_id": 2
-#            }, 
-#            {
-#              "disc_gen_name": "Medical", 
-#              "disc_gen_id": 3
-#            }, 
-#            {
-#              "disc_gen_name": "Law/Patents", 
-#              "disc_gen_id": 4
-#            }, 
-#            {
-#              "disc_gen_name": "Science", 
-#              "disc_gen_id": 5
-#            }, 
-#            {
-#              "disc_gen_name": "Bus/Financial", 
-#              "disc_gen_id": 6
-#            }, 
-#            {
-#              "disc_gen_name": "Marketing", 
-#              "disc_gen_id": 7
-#            }, 
-#            {
-#              "disc_gen_name": "Other", 
-#              "disc_gen_id": 8
-#            }, 
-#            {
-#              "disc_gen_name": "Social Sciences", 
-#              "disc_gen_id": 9
-#            }
-#          ]
+#        "uuid" => "7bbfdd74-a2a4-484f-8dbc-215a67026ce1", 
+#        "site_name" => "Kevin Dias", 
+#        "profile_url" => "http://www.proz.com/profile/1979687", #        "contact_info" =>
+#        {
+#          "first_name"=>"Kevin", 
+#          "middle_name"=>nil, 
+#          "last_name"=>"Dias"
 #        }, 
-#        "site_name": "Kevin Dias", 
-#        "uuid": "7bbfdd74-a2a4-484f-8dbc-215a67026ce1", 
-#        "profile_url": "http://www.proz.com/profile/1979687", 
-#        "contact_info": {
-#          "first_name": "Kevin", 
-#          "last_name": "Dias", 
-#          "middle_name": null
+#        "skills" => 
+#        {
+#          "language_pairs" => [], 
+#          "general_disciplines" => 
+#            [
+#              {
+#                "disc_gen_id" => 1, 
+#                "disc_gen_name" => "Tech/Engineering"
+#              }, 
+#              {
+#                "disc_gen_id" => 2, 
+#                "disc_gen_name" => "Art/Literary"
+#              }, 
+#              { 
+#                "disc_gen_id" => 3, 
+#                "disc_gen_name" => "Medical"
+#              }, 
+#              { 
+#                "disc_gen_id" => 4, 
+#                "disc_gen_name" => "Law/Patents"
+#              }, 
+#              {
+#                "disc_gen_id" => 5, 
+#                "disc_gen_name" => "Science"
+#              }, 
+#              {
+#                "disc_gen_id" => 6, 
+#                "disc_gen_name" => "Bus/Financial"
+#              }, 
+#              {
+#                "disc_gen_id" => 7, 
+#                "disc_gen_name" => "Marketing"
+#              }, 
+#              {
+#                "disc_gen_id" => 8, 
+#                "disc_gen_name" => "Other"
+#              }, 
+#              { 
+#                "disc_gen_id" => 9, 
+#                "disc_gen_name" => "Social Sciences"
+#              }
+#            ], 
+#          "specific_disciplines" => []
 #        }
-#      }, 
-#      "success": 1
-#    }
+#      }
 ```
 
 ## Contributing
