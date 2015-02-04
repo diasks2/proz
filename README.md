@@ -60,13 +60,13 @@ fm.freelancer_matches[0]['freelancer']['uuid']
 
 #### OAuth2
 
-To Setup Your App with ProZ OAuth2
+To Setup Your App with ProZ OAuth2:
 
-1. Create an account on [ProZ.com](https://www.proz.com)
+1. Create an account on [ProZ.com](https://www.proz.com).
 
-2. Register an [API client app](https://www.proz.com/oauth/client-apps)
+2. Register an [API client app](https://www.proz.com/oauth/client-apps).
 
-  You will be assigned a `client_id` and `client_secret`. You will need to choose a `redirect_uri`. For example, you could choose something like: `redirect_uri: https://www.yourdomain.com/proz` or `redirect_uri: https://www.yourdomain.com`  
+  You will be assigned a `client_id` and `client_secret`. You will need to choose a `redirect_uri`. For example, you could choose something like: `redirect_uri: https://www.yourdomain.com/proz` or `redirect_uri: https://www.yourdomain.com`.  
 
 3. Create a route in your project for the above `redirect_uri` if that route does not already exist.
   If you are building a Rails app, an example might be:
@@ -77,7 +77,8 @@ To Setup Your App with ProZ OAuth2
   match '/proz', to: 'static_pages#proz', via: :get
   ```
 
-4. Create a link within your app  
+4. Create a link within your app 
+
   *controller*
   ```ruby
   proz = Proz::OAuth.new(client_id: 'yourClientID', client_secret: 'yourClientSecret', redirect_uri: 'yourRedirectURI')
@@ -89,14 +90,14 @@ To Setup Your App with ProZ OAuth2
   <%= link_to "Link your ProZ.com Account", @oauth_link %>
   ```
 
-5. Exchange authorization code for tokens  
+5. Exchange your authorization code for an access token  
   ```ruby
   token = proz.exchange_code_for_token(params[:code])
   ```
 
-6. Save the token and refresh token  
+6. Save the token and refresh token (*optional*)   
   ```ruby
-  current_user.update_columns(proz_oauth_token: token['access_token'], proz_refresh_token: toekn['refresh_token'])
+  current_user.update_columns(proz_oauth_token: token['access_token'], proz_refresh_token: token['refresh_token'])
   ```
 
 7. Retrieve the user's profile info  
@@ -119,7 +120,7 @@ To Setup Your App with ProZ OAuth2
   * `contact_info`
   * `skills`
 
-Further details for each method can be found in the [ProZ API Specification](http://www.proz.com/api-docs/types/freelancer).
+  Further details for each method can be found in the [ProZ API Specification](http://www.proz.com/api-docs/types/freelancer).
 
 ## Contributing
 
