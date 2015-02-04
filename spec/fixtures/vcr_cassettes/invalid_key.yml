@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.proz.com/v2/freelancer/663e4488-58a1-4713-992c-c6d90aafa3cb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Proz-Api-Key:
+      - yyyyyyyyy
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 04 Feb 2015 06:49:20 GMT
+      Server:
+      - Apache
+      Cache-Control:
+      - no-store
+      Content-Length:
+      - '116'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_api_key","error_description":"Invalid API key.","error_messages":["Invalid
+        API key."],"success":0}'
+    http_version:
+  recorded_at: Wed, 04 Feb 2015 06:49:51 GMT
+recorded_with: VCR 2.9.3
