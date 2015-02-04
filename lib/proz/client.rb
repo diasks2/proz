@@ -3,7 +3,7 @@ require 'httparty'
 module Proz
   class Client
     include HTTParty
-    base_uri "https://api.proz.com/v2"
+    base_uri 'https://api.proz.com/v2'
     attr_reader :key
     def initialize(key:)
       @key = key

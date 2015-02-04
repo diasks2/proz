@@ -1,5 +1,9 @@
+require 'oauth2'
+require 'httparty'
+
 module Proz
-  class OAuth2
+  class OAuth
+    include HTTParty
     attr_reader :client_id, :client_secret, :redirect_uri
     def initialize(client_id:, client_secret:, redirect_uri:)
       @client_id = client_id
@@ -8,19 +12,23 @@ module Proz
     end
 
     def link
-      client.auth_code.authorize_url(:redirect_uri => redirect_uri)
+      client.auth_code.authorize_url(:scope => 'proz', :redirect_uri => redirect_uri)
     end
 
     def exchange_code_for_token(code)
-      token
+      token(code)
     end
 
     def access_token
-      token.token
+      token['access_token']
     end
 
     def refresh_token
-      token.refresh_token
+      token['refresh_token']
+    end
+
+    def request_new_token_with_refresh_token(refresh_token)
+
     end
 
     def profile(token)
@@ -34,7 +42,7 @@ module Proz
     end
 
     def token(code)
-      @token ||= client.auth_code.get_token(code, :redirect_uri => redirect_uri, :scope => '')
+      @token ||= self.class.post('https://www.proz.com/oauth/token', :body => { :code => code, :redirect_uri => redirect_uri, :client_id => client_id, :scope => '', :client_secret => client_secret, :grant_type => 'authorization_code' })
     end
   end
 end

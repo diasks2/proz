@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.proz.com/oauth/token
+    body:
+      encoding: UTF-8
+      string: code=xf505e6ac620cb51bb8dc99d4bddbef2f3122e70&redirect_uri=http%3A%2F%2Fwww.example.com&client_id=xxxxxxxxx&scope=&client_secret=yyyyyyyyy&grant_type=authorization_code
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 04 Feb 2015 03:30:40 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - PHPSESSID=17ec0c5cba276c880ed65dbfb0491638; expires=Fri, 03-Feb-2017 03:30:40
+        GMT; path=/; domain=.proz.com
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '152'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"q0245b8b893717386310160f117d1720583f3d22","expires_in":3600,"token_type":"Bearer","scope":"proz","refresh_token":"g197d8ba9dd0c608ee6e2c83c3b363540ec14b31"}'
+    http_version:
+  recorded_at: Wed, 04 Feb 2015 03:31:09 GMT
+recorded_with: VCR 2.9.3
