@@ -30,6 +30,8 @@ module Proz
       end
     end
 
+    private
+
     def freelancer_matches_response
       all_options = language_pair.merge!(options)
       @freelancer_matches_response ||= self.class.get("/freelancer-matches", query: all_options, headers: { 'X-Proz-API-Key' => key})

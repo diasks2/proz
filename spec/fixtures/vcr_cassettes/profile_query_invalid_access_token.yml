@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.proz.com/v2/freelancer/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer q76470e1fb5e5c0347c3a7393f6312fd980096ae
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 04 Feb 2015 08:19:59 GMT
+      Server:
+      - Apache
+      Cache-Control:
+      - no-store
+      Www-Authenticate:
+      - Bearer realm="Service", error="invalid_token", error_description="The access
+        token provided is invalid"
+      Content-Length:
+      - '84'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_token","error_description":"The access token provided
+        is invalid"}'
+    http_version: 
+  recorded_at: Wed, 04 Feb 2015 08:20:30 GMT
+recorded_with: VCR 2.9.3

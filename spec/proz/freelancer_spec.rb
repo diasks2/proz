@@ -9,7 +9,7 @@ RSpec.describe Proz::Freelancer do
   it 'returns an error if the key is invalid' do
     VCR.use_cassette 'invalid_key' do
       freelancer = Proz::Freelancer.new(key: 'yyyyyyyyy', uuid: '663e4488-58a1-4713-992c-c6d90aafa3cb')
-      expect { freelancer.freelancer }.to raise_error("Invalid API Key")
+      expect { freelancer.freelancer }.to raise_error('Invalid API Key')
     end
   end
 

@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.proz.com/v2/freelancer/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 4b89e678e8670bca496c9bd80d8b09b87c10d605
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 04 Feb 2015 08:23:11 GMT
+      Server:
+      - Apache
+      Cache-Control:
+      - no-store
+      Www-Authenticate:
+      - Bearer realm="Service", error="expired_token", error_description="The access
+        token provided has expired"
+      Content-Length:
+      - '85'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"error":"expired_token","error_description":"The access token provided
+        has expired"}'
+    http_version: 
+  recorded_at: Wed, 04 Feb 2015 08:23:42 GMT
+recorded_with: VCR 2.9.3

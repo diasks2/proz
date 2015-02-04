@@ -37,4 +37,11 @@ RSpec.describe Proz::OAuth do
       expect(proz.request_new_token_with_refresh_token('x92701ac20cb02a5742f2a0288b7a9f6a6d0b265')['refresh_token']).to eq('x6ee311617f0f0520e99de13b07ee61c03777134')
     end
   end
+
+  it 'requests an error if the code is invalid' do
+    VCR.use_cassette 'exchange_code_for_token_invalid_code' do
+      proz = Proz::OAuth.new(client_id: 'xxxxxxxxx', client_secret: 'yyyyyyyyy', redirect_uri: 'http://www.example.com')
+      expect { proz.exchange_code_for_token('xf505e6ac620cb51bb8dc99d4bddbef2f3122e70') }.to raise_error("Authorization code doesn't exist or is invalid for the client")
+    end
+  end
 end

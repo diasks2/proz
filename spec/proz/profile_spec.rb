@@ -29,4 +29,18 @@ RSpec.describe Proz::Profile do
       expect(profile.profile_url).to eq('http://www.proz.com/profile/1979687')
     end
   end
+
+  it 'should return an error is the access token is invalid' do
+    VCR.use_cassette 'profile_query_invalid_access_token' do
+      profile = Proz::Profile.new(token: 'q76470e1fb5e5c0347c3a7393f6312fd980096ae')
+      expect { profile.profile_url }.to raise_error('Invalid Token')
+    end
+  end
+
+  it 'should return an error is the access token is expired' do
+    VCR.use_cassette 'profile_query_access_token_expired' do
+      profile = Proz::Profile.new(token: '4b89e678e8670bca496c9bd80d8b09b87c10d605')
+      expect { profile.profile_url }.to raise_error('Access Token Expired')
+    end
+  end
 end
