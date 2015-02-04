@@ -29,4 +29,12 @@ RSpec.describe Proz::OAuth do
       expect(proz.exchange_code_for_token('xf505e6ac620cb51bb8dc99d4bddbef2f3122e70')['refresh_token']).to eq('g197d8ba9dd0c608ee6e2c83c3b363540ec14b31')
     end
   end
+
+  it 'requests a new token with the refresh token' do
+    VCR.use_cassette 'refresh_token' do
+      proz = Proz::OAuth.new(client_id: 'xxxxxxxxx', client_secret: 'yyyyyyyyy', redirect_uri: 'http://www.example.com')
+      expect(proz.request_new_token_with_refresh_token('x92701ac20cb02a5742f2a0288b7a9f6a6d0b265')['access_token']).to eq('x325fa5d0a661df967a6c52d07ba352649a7c153')
+      expect(proz.request_new_token_with_refresh_token('x92701ac20cb02a5742f2a0288b7a9f6a6d0b265')['refresh_token']).to eq('x6ee311617f0f0520e99de13b07ee61c03777134')
+    end
+  end
 end

@@ -16,33 +16,17 @@ module Proz
     end
 
     def exchange_code_for_token(code)
-      token(code)
-    end
-
-    def access_token
-      token['access_token']
-    end
-
-    def refresh_token
-      token['refresh_token']
+      @token ||= self.class.post('https://www.proz.com/oauth/token', :body => { :code => code, :redirect_uri => redirect_uri, :client_id => client_id, :scope => '', :client_secret => client_secret, :grant_type => 'authorization_code' })
     end
 
     def request_new_token_with_refresh_token(refresh_token)
-
-    end
-
-    def profile(token)
-      token.get('https://api.proz.com/v2/freelancer/me')
+      @refreshed_token ||= self.class.post('https://www.proz.com/oauth/token', :body => { :refresh_token => refresh_token, :redirect_uri => redirect_uri, :client_id => client_id, :scope => '', :client_secret => client_secret, :grant_type => 'refresh_token' })
     end
 
     private
 
     def client
       @client ||= OAuth2::Client.new(client_id, client_secret, :site => 'https://www.proz.com')
-    end
-
-    def token(code)
-      @token ||= self.class.post('https://www.proz.com/oauth/token', :body => { :code => code, :redirect_uri => redirect_uri, :client_id => client_id, :scope => '', :client_secret => client_secret, :grant_type => 'authorization_code' })
     end
   end
 end
