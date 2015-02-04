@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.proz.com/v2/freelancer/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer q76470e1fb5e5c0347c3a7393f6312fd980096ae
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 04 Feb 2015 04:05:36 GMT
+      Server:
+      - Apache
+      Cache-Control:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"success":1,"meta":null,"data":{"uuid":"7bbfdd74-a2a4-484f-8dbc-215a67026ce1","site_name":"Kevin
+        Dias","profile_url":"http:\/\/www.proz.com\/profile\/1979687","contact_info":{"first_name":"Kevin","middle_name":null,"last_name":"Dias"},"skills":{"language_pairs":[],"general_disciplines":[{"disc_gen_id":1,"disc_gen_name":"Tech\/Engineering"},{"disc_gen_id":2,"disc_gen_name":"Art\/Literary"},{"disc_gen_id":3,"disc_gen_name":"Medical"},{"disc_gen_id":4,"disc_gen_name":"Law\/Patents"},{"disc_gen_id":5,"disc_gen_name":"Science"},{"disc_gen_id":6,"disc_gen_name":"Bus\/Financial"},{"disc_gen_id":7,"disc_gen_name":"Marketing"},{"disc_gen_id":8,"disc_gen_name":"Other"},{"disc_gen_id":9,"disc_gen_name":"Social
+        Sciences"}],"specific_disciplines":[]}}}'
+    http_version:
+  recorded_at: Wed, 04 Feb 2015 04:06:06 GMT
+recorded_with: VCR 2.9.3
