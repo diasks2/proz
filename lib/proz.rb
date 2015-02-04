@@ -1,4 +1,5 @@
 require "proz/version"
-require "proz/client"
 require "proz/oauth"
 require "proz/profile"
+require "proz/freelancer"
+require "proz/freelancer_matches"
