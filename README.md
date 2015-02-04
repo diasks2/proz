@@ -1,6 +1,6 @@
 # ProZ
 
-[![Gem Version](https://badge.fury.io/rb/proz.svg)](http://badge.fury.io/rb/proz) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/diasks2/proz/blob/master/LICENSE.txt)
+[![Gem Version](https://badge.fury.io/rb/proz.svg)](http://badge.fury.io/rb/proz) [![Build Status](https://travis-ci.org/diasks2/proz.png)](https://travis-ci.org/diasks2/proz) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/diasks2/proz/blob/master/LICENSE.txt)
 
 ProZ is a Ruby wrapper for the [ProZ.com API](http://www.proz.com/api-docs). The ProZ.com 2.0 API is a REST-like API for interacting with ProZ.com services.
 
@@ -28,7 +28,6 @@ Get a representation of a single freelancer by providing that freelancer's [uuid
 
 ```ruby
 freelancer = Proz::Freelancer.new(key: 'yourAPIkey', uuid: '663e4488-58a1-4713-992c-c6d90aafa3cb')
-
 freelancer.site_name
 # => 'Smartranslators'
 ```
@@ -121,6 +120,10 @@ To Setup Your App with ProZ OAuth2:
   * `skills`
 
   Further details for each method can be found in the [ProZ API Specification](http://www.proz.com/api-docs/types/freelancer).
+
+## TODO
+
+1. Add the [Messaging Service API](http://www.proz.com/api-docs/messaging)
 
 ## Contributing
 
