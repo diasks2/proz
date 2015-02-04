@@ -12,8 +12,27 @@ module Proz
     end
 
     def freelancer_matches
+      case
+      when freelancer_matches_response.has_key?('error')
+        if freelancer_matches_response['error'].eql?('invalid_api_key')
+          raise 'Invalid API Key'
+        else
+          raise 'Invalid Request'
+        end
+      when freelancer_matches_response.has_key?('meta')
+        if freelancer_matches_response['meta']['num_results'].eql?(0)
+          {}
+        else
+          freelancer_matches_response['data']
+        end
+      else
+        freelancer_matches_response['data']
+      end
+    end
+
+    def freelancer_matches_response
       all_options = language_pair.merge!(options)
-      self.class.get("/freelancer-matches", query: all_options, headers: { 'X-Proz-API-Key' => key})['data']
+      @freelancer_matches_response ||= self.class.get("/freelancer-matches", query: all_options, headers: { 'X-Proz-API-Key' => key})
     end
   end
 end
