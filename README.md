@@ -30,7 +30,6 @@ Get a representation of a single freelancer by providing that freelancer's [uuid
 freelancer = Proz::Freelancer.new(key: 'yourAPIkey', uuid: '663e4488-58a1-4713-992c-c6d90aafa3cb')
 
 freelancer.site_name
-
 # => 'Smartranslators'
 ```
 
@@ -52,12 +51,10 @@ You can pass any number of [optionial parameters](http://www.proz.com/api-docs/d
 ```ruby
 fm = Proz::FreelancerMatches.new(key: 'yourAPIkey', language_pair: 'eng_esl')
 fm.freelancer_matches[0]['freelancer']['uuid']
-
 # => '663e4488-58a1-4713-992c-c6d90aafa3cb'
 
 fm = Proz::FreelancerMatches.new(key: 'yourAPIkey', language_pair: 'eng_esl', min_yrs_proz: 10, country_code: 'us')
 fm.freelancer_matches[0]['freelancer']['uuid']
-
 # => 'b9eade6d-33ac-4c7d-b6f1-42905375fc0b'
 ```
 
@@ -69,59 +66,58 @@ To Setup Your App with ProZ OAuth2
 
 2. Register an [API client app](https://www.proz.com/oauth/client-apps)
 
-You will be assigned a `client_id` and `client_secret`. You will need to choose a `redirect_uri`. For example, you could choose something like:  
-`redirect_uri: https://www.yourdomain.com/proz` or `redirect_uri: https://www.yourdomain.com`  
+  You will be assigned a `client_id` and `client_secret`. You will need to choose a `redirect_uri`. For example, you could choose something like: `redirect_uri: https://www.yourdomain.com/proz` or `redirect_uri: https://www.yourdomain.com`  
 
 3. Create a route in your project for the above `redirect_uri` if that route does not already exist.
-If you are building a Rails app, an example might be:
+  If you are building a Rails app, an example might be:
 
-*config/routes.rb*  
+  *config/routes.rb*  
 
-```ruby
-match '/proz', to: 'static_pages#proz', via: :get
-```
+  ```ruby
+  match '/proz', to: 'static_pages#proz', via: :get
+  ```
 
 4. Create a link within your app  
-*controller*
-```ruby
-proz = Proz::OAuth.new(client_id: 'yourClientID', client_secret: 'yourClientSecret', redirect_uri: 'yourRedirectURI')
-@oauth_link = proz.link
-```
+  *controller*
+  ```ruby
+  proz = Proz::OAuth.new(client_id: 'yourClientID', client_secret: 'yourClientSecret', redirect_uri: 'yourRedirectURI')
+  @oauth_link = proz.link
+  ```
 
-*view*
-```ruby
-<%= link_to "Link your ProZ.com Account", @oauth_link %>
-```
+  *view*
+  ```ruby
+  <%= link_to "Link your ProZ.com Account", @oauth_link %>
+  ```
 
 5. Exchange authorization code for tokens  
-```ruby
-token = proz.exchange_code_for_token(params[:code])
-```
+  ```ruby
+  token = proz.exchange_code_for_token(params[:code])
+  ```
 
 6. Save the token and refresh token  
-```ruby
-current_user.update_columns(proz_oauth_token: token['access_token'], proz_refresh_token: toekn['refresh_token'])
-```
+  ```ruby
+  current_user.update_columns(proz_oauth_token: token['access_token'], proz_refresh_token: toekn['refresh_token'])
+  ```
 
 7. Retrieve the user's profile info  
-```ruby
-proz = Proz::Profile.new(token: token)
-proz.uuid
-# => '7bbfdd74-a2a4-484f-8dbc-215a67026ce1'
+  ```ruby
+  proz = Proz::Profile.new(token: token)
+  proz.uuid
+  # => '7bbfdd74-a2a4-484f-8dbc-215a67026ce1'
 
-proz.site_name
-# => 'Kevin Dias'
+  proz.site_name
+  # => 'Kevin Dias'
 
-proz.profile_url
-# => 'http://www.proz.com/profile/1979687'
-```
+  proz.profile_url
+  # => 'http://www.proz.com/profile/1979687'
+  ```
 
-**Supported Methods**  
-* `uuid`
-* `site_name`
-* `profile_url`
-* `contact_info`
-* `skills`
+  **Supported Methods**  
+  * `uuid`
+  * `site_name`
+  * `profile_url`
+  * `contact_info`
+  * `skills`
 
 Further details for each method can be found in the [ProZ API Specification](http://www.proz.com/api-docs/types/freelancer).
 
