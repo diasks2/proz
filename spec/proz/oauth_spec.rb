@@ -19,7 +19,7 @@ RSpec.describe Proz::OAuth do
 
   it 'returns a link for the user to authorize the app' do
     proz = Proz::OAuth.new(client_id: 'abc123xxxxxxxxxxxxxx', client_secret: 'abc123xxxxyyyyy', redirect_uri: 'http://www.example.com')
-    expect(proz.link).to eq("https://www.proz.com/oauth/authorize?client_id=abc123xxxxxxxxxxxxxx&redirect_uri=http%3A%2F%2Fwww.example.com&response_type=code&scope=proz")
+    expect(proz.link).to eq("https://www.proz.com/oauth/authorize?client_id=abc123xxxxxxxxxxxxxx&redirect_uri=http%3A%2F%2Fwww.example.com&response_type=code")
   end
 
   it 'exchanges a code for an access token' do
