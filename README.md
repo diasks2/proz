@@ -80,8 +80,8 @@ To Setup Your App with ProZ OAuth2:
 
   *controller*
   ```ruby
-  proz = Proz::OAuth.new(client_id: 'yourClientID', client_secret: 'yourClientSecret', redirect_uri: 'yourRedirectURI')
-  @oauth_link = proz.link
+  proz_oauth = Proz::OAuth.new(client_id: 'yourClientID', client_secret: 'yourClientSecret', redirect_uri: 'yourRedirectURI')
+  @oauth_link = proz_oauth.link
   ```
 
   *view*
@@ -91,7 +91,7 @@ To Setup Your App with ProZ OAuth2:
 
 5. Exchange your authorization code for an access token  
   ```ruby
-  token = proz.exchange_code_for_token(params[:code])
+  token = proz_oauth.exchange_code_for_token(params[:code])
   ```
 
 6. Save the token and refresh token (*optional*)   
@@ -101,7 +101,7 @@ To Setup Your App with ProZ OAuth2:
 
 7. Retrieve the user's profile info  
   ```ruby
-  proz = Proz::Profile.new(token: token)
+  proz = Proz::Profile.new(token: token['access_token'])
   proz.uuid
   # => '7bbfdd74-a2a4-484f-8dbc-215a67026ce1'
 
