@@ -10,7 +10,7 @@ module Proz
     end
 
     def entries
-      self.class.get("/workstatus/search", headers: { 'Authorization' => "Bearer #{token}" })
+      self.class.get("/workstatus", headers: { 'Authorization' => "Bearer #{token}" })
     end
   end
 end
