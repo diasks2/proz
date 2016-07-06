@@ -11,7 +11,10 @@ module Proz
 
     def post
       self.class.post("/workstatus",
-        body: { message: 'This is a test from TMT' }.to_json,
+        body: { message: 'This is a test from TMT',
+                source_language: "eng",
+                target_language: "spa",
+                wordcount: "234" }.to_json,
         headers: { 'Authorization' => "Bearer #{token}" } )
     end
   end
