@@ -10,7 +10,7 @@ module Proz
     end
 
     def post
-      self.class.post("/workstatus",
+      puts self.class.post("/workstatus",
         body: { message: 'This is a test from TMT',
                 source_language: "eng",
                 target_language: "spa",
