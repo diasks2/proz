@@ -13,8 +13,8 @@ module Proz
       self.class.get("/workstatus", headers: { 'Authorization' => "Bearer #{token}" })
     end
 
-    def user_entries(user_eid)
-      self.class.get("/workstatus?user_eid=" + user_eid, headers: { 'Authorization' => "Bearer #{token}" })
+    def user_entries(user_uuid)
+      self.class.get("/workstatus?user_uuid=" + user_uuid, headers: { 'Authorization' => "Bearer #{token}" })
     end
   end
 end
