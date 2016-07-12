@@ -14,11 +14,11 @@ module Proz
     end
 
     def wiwo_entries
-      all_wiwos.entries["wiwos"]
+      all_wiwos["wiwos"]
     end
 
     def user_entries
-      all_wiwos.entries["users"]
+      all_wiwos["users"]
     end
 
     def user_entries(user_uuid)
