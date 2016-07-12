@@ -13,11 +13,11 @@ module Proz
       all_wiwos
     end
 
-    def wiwo_entries
+    def wiwos
       all_wiwos["wiwos"]
     end
 
-    def user_entries
+    def users
       all_wiwos["users"]
     end
 
