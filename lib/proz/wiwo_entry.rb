@@ -13,7 +13,7 @@ module Proz
 
     def post
       body = message.merge!(options)
-      self.class.post("/workstatus",
+      self.class.post("/wiwo",
         body: body,
         headers: { 'Authorization' => "Bearer #{token}" } )
     end
