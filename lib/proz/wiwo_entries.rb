@@ -10,19 +10,25 @@ module Proz
     end
 
     def entries
-      self.class.get("/wiwo", headers: { 'X-Proz-API-Key' => api_key })
+      all_wiwos
     end
 
     def wiwo_entries
-      self.class.get("/wiwo", headers: { 'X-Proz-API-Key' => api_key }).entries["wiwos"]
+      all_wiwos.entries["wiwos"]
     end
 
     def user_entries
-      self.class.get("/wiwo", headers: { 'X-Proz-API-Key' => api_key }).entries["users"]
+      all_wiwos.entries["users"]
     end
 
     def user_entries(user_uuid)
       self.class.get("/wiwo?user_uuid=" + user_uuid, headers: { 'X-Proz-API-Key' => api_key })
+    end
+
+    private
+
+    def all_wiwos
+      @wiwos ||= self.class.get("/wiwo", headers: { 'X-Proz-API-Key' => api_key })
     end
   end
 end
