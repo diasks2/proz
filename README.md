@@ -159,7 +159,7 @@ wiwo.entries
 
 POST WIWO
 
-Uses OAuth2 with the 'wiwo.post' default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+Uses OAuth2 with the `wiwo.post` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
 
 Send a JSON object with the following fields. Only the "message" is required.
 * message (string) - a plain text message.
@@ -187,7 +187,7 @@ Proz::WiwoEntry.new(
 
 POST Reply
 
-Uses OAuth2 with the 'wiwo.post' default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+Uses OAuth2 with the `wiwo.post` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
 
 Send a JSON object with the following fields. Only the "message" is required.
 * message (string) - a plain text message.
