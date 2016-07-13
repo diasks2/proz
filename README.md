@@ -157,6 +157,50 @@ wiwo.entries
 #    }
 ```
 
+POST WIWO
+
+Uses OAuth2 with the 'wiwo.post' default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+
+Send a JSON object with the following fields. Only the "message" is required.
+* message (string) - a plain text message.
+* message_language (string) - a 3-character language code for the message.
+* source_language (string) - a 3-character language code for the source
+* target_language (string)
+* discipline (string) - a free-text discipline
+* wordcount (int) - the number of words completed
+* public (boolean) - whether or not the status update should be publicly visible.
+* cat_tool (string) - A free-text name of the CAT tool in use, if any.
+
+```
+Proz::WiwoEntry.new(
+  token: 'access_token',
+  message: "Hello World",
+  source_language: "eng",
+  target_language: "esp",
+  wordcount: 500,
+  discipline: "automotive",
+  message_language: "eng",
+  public: 1,
+  cat_tool: "Awesome CAT"
+).post
+```
+
+POST Reply
+
+Uses OAuth2 with the 'wiwo.post' default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+
+Send a JSON object with the following fields. Only the "message" is required.
+* message (string) - a plain text message.
+* message_language (string) - a 3-character language code for the message.
+
+```
+Proz::WiwoReply.new(
+  token: 'access_token',
+  message: "Hello World",
+  message_language: "eng"
+).post
+```
+
 ### OAuth2
 
 To Setup Your App with ProZ OAuth2:
