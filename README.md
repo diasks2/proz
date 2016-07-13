@@ -20,9 +20,9 @@ gem 'proz'
 
 ## Usage
 
-#### Directory Service API
+### Directory Service API
 
-##### Freelancer
+#### Freelancer
 
 Get a representation of a single freelancer by providing that freelancer's [uuid](http://www.proz.com/api-docs/formats/uuid). The uuid is not provided publicly by ProZ so you have to obtain it either through the Freelancer Match API or the OAuth2 API.
 
@@ -41,7 +41,7 @@ freelancer.site_name
 
 Further details for each method can be found in the [ProZ API Specification](http://www.proz.com/api-docs/types/freelancer).
 
-##### Freelancer Matches
+#### Freelancer Matches
 
 Get freelancers that match a set of criteria. A [language pair](http://www.proz.com/api-docs/formats/language-pair) is required for this query. The language pair code should be in the form of a source language code, an underscore, and a target language code. The language codes are a variation of an earlier version of the ISO 639-2 standard, so please check the [ProZ language code](http://www.proz.com/api-docs/codes/language) list to make sure you have the correct language code.
 
@@ -57,7 +57,7 @@ fm.freelancer_matches[0]['freelancer']['uuid']
 # => 'b9eade6d-33ac-4c7d-b6f1-42905375fc0b'
 ```
 
-##### WIWO (What I'm Working On)
+#### WIWO (What I'm Working On)
 
 GET WIWO data
 
@@ -65,7 +65,6 @@ Note that all referenced users are included in the response (using "side loading
 
 ```ruby
 wiwo = Proz::WiwoEntries.new(key: 'yourAPIkey')
-fm.freelancer_matches[0]['freelancer']['uuid']
 wiwo.entries
 
 # => {
@@ -158,7 +157,7 @@ wiwo.entries
 #    }
 ```
 
-#### OAuth2
+### OAuth2
 
 To Setup Your App with ProZ OAuth2:
 
