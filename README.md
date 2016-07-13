@@ -190,11 +190,13 @@ POST Reply
 Uses OAuth2 with the `wiwo.post` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
 
 Send a JSON object with the following fields. Only the "message" is required.
+* id (string) - id of the parent wiwo
 * message (string) - a plain text message.
 * message_language (string) - a 3-character language code for the message.
 
 ```
 Proz::WiwoReply.new(
+  id: '567',
   token: 'access_token',
   message: "Hello World",
   message_language: "eng"
