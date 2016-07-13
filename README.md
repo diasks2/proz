@@ -57,6 +57,107 @@ fm.freelancer_matches[0]['freelancer']['uuid']
 # => 'b9eade6d-33ac-4c7d-b6f1-42905375fc0b'
 ```
 
+##### WIWO (What I'm Working On)
+
+GET WIWO data
+
+Note that all referenced users are included in the response (using "side loading").
+
+```ruby
+wiwo = Proz::WiwoEntries.new(key: 'yourAPIkey')
+fm.freelancer_matches[0]['freelancer']['uuid']
+wiwo.entries
+
+# => {
+#     "_links": {
+#        "self": {
+#          "href": "https://api.proz.com/v2/wiwo"
+#        },
+#        "next": {
+#          "href": "https://api.proz.com/v2/wiwo?page=2"
+#        },
+#        "prev": {
+#          "href": null
+#        }
+#      },
+#      "wiwos": [
+#        {
+#          "id": 110,
+#          "self_link": "https://api.proz.com/v2/wiwo/110",
+#          "time": "2016-07-12T15:51:10+00:00",
+#          "user_eid": 1943273,
+#          "user_link": "https://api.proz.com/v2/users/fcfc20dc-bac6-41bd-8dbe-897e5aeefaac",
+#          "message": "Law-related articles from Arabic to Italian. About 30k words. Really demanding!",
+#          "message_language": null,
+#          "source_language": null,
+#          "target_language": null,
+#          "wordcount": null,
+#          "disc_gen_id": null,
+#          "disc_spec_id": null,
+#          "discipline": null,
+#          "cat_tool": null,
+#          "public": true,
+#          "num_replies": 3,
+#          "replies": [
+#            {
+#              "id": 1,
+#              "wiwo_id": 110,
+#              "wiwo_link": "https://api.proz.com/v2/wiwo/110",
+#              "time": "2016-07-11T19:02:54+00:00",
+#              "user_eid": 41429,
+#              "user_link": "https://api.proz.com/v2/users/32a9a4d0-cb6e-463f-a0ab-63d0a0418bc7",
+#              "message": "Test wiwo reply",
+#              "message_language": null
+#            },
+#            {
+#              "id": 2,
+#              "wiwo_id": 110,
+#              "wiwo_link": "https://api.proz.com/v2/wiwo/110",
+#              "time": "2016-07-11T19:03:38+00:00",
+#              "user_eid": 41429,
+#              "user_link": "https://api.proz.com/v2/users/32a9a4d0-cb6e-463f-a0ab-63d0a0418bc7",
+#              "message": "Test wiwo reply",
+#              "message_language": null
+#            },
+#            {
+#              "id": 3,
+#              "wiwo_id": 110,
+#              "wiwo_link": "https://api.proz.com/v2/wiwo/110",
+#              "time": "2016-07-11T19:04:48+00:00",
+#              "user_eid": 41429,
+#              "user_link": "https://api.proz.com/v2/users/32a9a4d0-cb6e-463f-a0ab-63d0a0418bc7",
+#              "message": "Test wiwo reply",
+#              "message_language": null
+#            }
+#          ]
+#        },
+#        { ... }
+#      ],
+#      "users": [
+#        {
+#          "self_link": "https://api.proz.com/v2/users/3f9f64e5-5ef7-4641-98aa-df01a228f44c",
+#          "uuid": "3f9f64e5-5ef7-4641-98aa-df01a228f44c",
+#          "site_name": "Alice Wolfe, DDS",
+#          "account_type": 2,
+#          "freelancer_profile_link": "https://api.proz.com/v2/freelancer/3f9f64e5-5ef7-4641-98aa-df01a228f44c",
+#          "profile_url": "http://www.proz.com/profile/610",
+#          "image_url": "https://static-ssl.proz.com/profile_resources/610_r4cd97b7149061.jpg",
+#          "is_proz_member": true,
+#          "proz_membership_type": "individual",
+#          "is_cpn": true,
+#          "cpn_language_pair": "eng_dan",
+#          "native_languages": [
+#            "dan"
+#          ],
+#          "timezone": "America/New_York",
+#          "country": "us",
+#          "skype": "awolfe"
+#        },
+#        { ... }
+#      ]
+#    }
+```
+
 #### OAuth2
 
 To Setup Your App with ProZ OAuth2:

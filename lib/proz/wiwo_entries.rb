@@ -4,9 +4,9 @@ module Proz
   class WiwoEntries
     include HTTParty
     base_uri "https://api.proz.com/v2"
-    attr_reader :api_key
-    def initialize(api_key:)
-      @api_key = api_key
+    attr_reader :key
+    def initialize(key:)
+      @key = key
     end
 
     def entries
@@ -22,13 +22,13 @@ module Proz
     end
 
     def user_entries(user_uuid)
-      self.class.get("/wiwo?user_uuid=" + user_uuid, headers: { 'X-Proz-API-Key' => api_key })
+      self.class.get("/wiwo?user_uuid=" + user_uuid, headers: { 'X-Proz-API-Key' => key })
     end
 
     private
 
     def all_wiwos
-      @wiwos ||= self.class.get("/wiwo", headers: { 'X-Proz-API-Key' => api_key })
+      @wiwos ||= self.class.get("/wiwo", headers: { 'X-Proz-API-Key' => key })
     end
   end
 end
