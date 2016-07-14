@@ -1,7 +1,7 @@
 require 'httparty'
 
 module Proz
-  class WiwoEntry
+  class PostWiwoEntry
     include HTTParty
     base_uri "https://api.proz.com/v2"
     attr_reader :token, :message, :options

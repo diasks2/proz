@@ -155,6 +155,38 @@ wiwo.entries
 #        { ... }
 #      ]
 #    }
+
+
+wiwo = Proz::WiwoEntries.new(key: 'yourAPIkey')
+# Filter the returned WIWOs
+# Options include:
+# * user_uuid (string)
+# * message_contains (string)
+# * min_time (datetime)
+
+options = {
+  user_uuid: '7ccfee74-a2a4-484f-8dbc-215a67026ce1',
+  message_contains: 'hello world',
+  min_time: '2016-07-013T01:01:01+00:00'
+}
+wiwo.filtered_entries(options)
+```
+
+GET WIWO (OAuth2)
+
+```ruby
+# Get user's WIWOs (public + private)
+Proz::GetWiwoEntry.new(
+  token: 'access_token',
+  include_private: true
+).get
+
+# Get user's WIWOs (public only)
+Proz::GetWiwoEntry.new(
+  token: 'access_token',
+  include_private: false
+).get
+
 ```
 
 POST WIWO
@@ -172,7 +204,7 @@ Send a JSON object with the following fields. Only the "message" is required.
 * cat_tool (string) - A free-text name of the CAT tool in use, if any.
 
 ```
-Proz::WiwoEntry.new(
+Proz::PostWiwoEntry.new(
   token: 'access_token',
   message: "Hello World",
   source_language: "eng",
@@ -195,7 +227,7 @@ Send a JSON object with the following fields. Only the "message" is required.
 * message_language (string) - a 3-character language code for the message.
 
 ```
-Proz::WiwoReply.new(
+Proz::PostWiwoReply.new(
   id: '567',
   token: 'access_token',
   message: "Hello World",
