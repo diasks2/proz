@@ -13,7 +13,7 @@ module Proz
 
     def get
       if include_private
-        self.class.get("/wiwo?user_uuid=" + user_uuid + "?include_private=1",
+        self.class.get("/wiwo?user_uuid=" + user_uuid + "&include_private=1",
         headers: { 'Authorization' => "Bearer #{token}" } )
       else
         self.class.get("/wiwo?user_uuid=" + user_uuid,
