@@ -138,7 +138,7 @@ Proz::PostWiwoEntry.new(
     latitude: 40.706872, 
     longitude: -74.011254,
     show_location: 1
-  }
+  },
   representative_terms: ['term 1', 'term 2', 'term 3', 'term 4', 'term 5']
 ).post
 ```
