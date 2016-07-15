@@ -178,12 +178,14 @@ GET WIWO (OAuth2)
 # Get user's WIWOs (public + private)
 Proz::GetWiwoEntry.new(
   token: 'access_token',
+  user_uuid: '7ccfee74-a2a4-484f-8dbc-215a67026ce1',
   include_private: true
 ).get
 
 # Get user's WIWOs (public only)
 Proz::GetWiwoEntry.new(
   token: 'access_token',
+  user_uuid: '7ccfee74-a2a4-484f-8dbc-215a67026ce1',
   include_private: false
 ).get
 
@@ -202,6 +204,13 @@ Send a JSON object with the following fields. Only the "message" is required.
 * wordcount (int) - the number of words completed
 * public (boolean) - whether or not the status update should be publicly visible.
 * cat_tool (string) - A free-text name of the CAT tool in use, if any.
+* percent_complete (int) - An integer from 0 - 100 describing the completion of the project the translator is working on.
+* busy_meter (int) - An integer from 1 - 5 describing how busy the translator is.
+* location (hash)
+  - latitude (decimal) - Latitude location where the translator is sending the message from.
+  - longitude (decimal) - Longitude location where the translator is sending the message from.
+  - show_location (boolean) - Allow the submitted location to be shown in the status update.
+* representative_terms (array) - Up to 5 representative terms fron the source document the translator is working on.
 
 ```
 Proz::PostWiwoEntry.new(
@@ -213,7 +222,15 @@ Proz::PostWiwoEntry.new(
   discipline: "automotive",
   message_language: "eng",
   public: 1,
-  cat_tool: "Awesome CAT"
+  cat_tool: "Awesome CAT",
+  percent_complete: 95,
+  busy_meter: 5,
+  location: { 
+    latitude: 40.706872, 
+    longitude: -74.011254,
+    show_location: 1
+  }
+  representative_terms: ['term 1', 'term 2', 'term 3', 'term 4', 'term 5']
 ).post
 ```
 
