@@ -1,0 +1,17 @@
+require 'httparty'
+
+module Proz
+  class GetSingleWiwoEntry
+    include HTTParty
+    base_uri "https://api.proz.com/v2"
+    attr_reader :token, :wiwo_id
+    def initialize(token:, wiwo_id:)
+      @token = token
+      @wiwo_id = wiwo_id
+    end
+
+    def get
+      self.class.get("/wiwo/#{wiwo_id}", headers: { 'Authorization' => "Bearer #{token}" } )
+    end
+  end
+end
