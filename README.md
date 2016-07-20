@@ -102,7 +102,7 @@ Proz::GetWiwoEntry.new(
 
 POST WIWO
 
-Uses OAuth2 with the `wiwo.post` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
 
 Send a JSON object with the following fields. Only the "message" is required.
 * message (string) - a plain text message.
@@ -143,9 +143,39 @@ Proz::PostWiwoEntry.new(
 ).post
 ```
 
+PATCH WIWO
+
+Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+
+```
+Proz::PatchWiwoEntry.new(
+  token: 'access_token',
+  wiwo_id: 'wiwo_id',
+  message: "Hello World",
+  source_language: "eng",
+  target_language: "esp",
+  wordcount: 500,
+  discipline: "automotive",
+  message_language: "eng",
+  public: 1,
+  cat_tool: "Awesome CAT"
+).patch
+```
+
+DELETE WIWO
+
+Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+
+```ruby
+Proz::DeleteWiwoEntry.new(
+  token: 'access_token',
+  wiwo_id: 'wiwo_id'
+).delete
+```
+
 POST Reply
 
-Uses OAuth2 with the `wiwo.post` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
 
 Send a JSON object with the following fields. Only the "message" is required.
 * id (string) - id of the parent wiwo
@@ -160,6 +190,33 @@ Proz::PostWiwoReply.new(
   message_language: "eng"
 ).post
 ```
+
+PATCH Reply
+
+Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+
+```ruby
+Proz::PatchWiwoReply.new(
+  token: 'access_token',
+  wiwo_id: 'wiwo_id'
+  wiwo_reply_id: 'wiwo_reply_id',
+  message: 'message',
+  message_language: 'message_language'
+).patch
+```
+
+DELETE Reply
+
+Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
+
+```ruby
+Proz::DeleteWiwoReply.new(
+  token: 'access_token',
+  wiwo_id: 'wiwo_id'
+  wiwo_reply_id: 'wiwo_reply_id'
+).delete
+```
+
 
 ### OAuth2
 
