@@ -109,6 +109,15 @@ Proz::GetSingleWiwoEntry.new(
 ).get
 ```
 
+GET Single Public WIWO (API Key)
+
+```ruby
+Proz::GetSinglePublicWiwoEntry.new(
+  key: 'key',
+  wiwo_id: 'wiwo_id',
+).get
+```
+
 POST WIWO
 
 Uses OAuth2 with the `wiwo` default scope. Use the [omniauth-proz](https://github.com/diasks2/omniauth-proz) gem to easily authenticate.
