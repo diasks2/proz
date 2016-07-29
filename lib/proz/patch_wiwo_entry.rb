@@ -13,7 +13,7 @@ module Proz
 
     def patch
       self.class.patch("/wiwo/#{wiwo_id}",
-        body: options.to_json,
+        body: options,
         headers: { 'Authorization' => "Bearer #{token}" } )
     end
   end
